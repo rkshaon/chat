@@ -1,1 +1,2 @@
 channels
+channels_redis
