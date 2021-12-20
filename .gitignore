@@ -1,1 +1,4 @@
 channelsenv
+chatapp/__pycache__
+chatapp/migrations
+realtime_chat/__pycache__
