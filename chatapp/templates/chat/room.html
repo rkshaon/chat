@@ -6,9 +6,12 @@
     <title>Chat Room</title>
 </head>
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
+    <!-- <textarea id="chat-log" cols="100" rows="20"></textarea><br> -->
+    <ul id="chat-log"><li>Chat start Here</li></ul>
     <input id="chat-message-input" type="text" size="100"><br>
     <input id="chat-message-submit" type="button" value="Send">
+    <input type="file" id="imageInput" accept="image/*">
+    <button type="button" id="sendImageButton">Send Image</button>
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
@@ -21,10 +24,33 @@
             + '/'
         );
 
+        // chatSocket.onmessage = function(e) {
+        //     const data = JSON.parse(e.data);
+        //     document.querySelector('#chat-log').value += (data.message + '\n');
+        // };
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            console.log(data);
+            const messageList = document.querySelector('#chat-log');
+            
+            if (data.type === 'image') {
+                const img = document.createElement('img');
+                img.src = data.content;
+                img.style.maxWidth = '200px'; // Adjust as necessary
+                messageList.appendChild(img);
+                const nl = document.createElement('br');
+                messageList.appendChild(nl)
+                // message = 'image found';
+                // document.querySelector('#chat-log').value += (message + '\n');
+            } else {
+                const message = data.message;
+                const li = document.createElement('li');
+                li.textContent = message;
+                messageList.appendChild(li);
+                // document.querySelector('#chat-log').value += (message + '\n');
+            }
         };
+
 
         chatSocket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');
@@ -44,6 +70,23 @@
                 'message': message
             }));
             messageInputDom.value = '';
+        };
+
+        document.querySelector("#sendImageButton").onclick = function() {
+            console.log('Here');
+            const fileInput = document.querySelector("#imageInput");
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const message = {
+                        'type': 'image',
+                        'content': e.target.result
+                    };
+                    chatSocket.send(JSON.stringify(message));
+                };
+                reader.readAsDataURL(file);
+            }
         };
     </script>
 </body>
