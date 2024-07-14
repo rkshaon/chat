@@ -25,13 +25,12 @@ export default {
       chatList: [
         { name: 'Rezaul Karim Shaon', messages: [{ sender: 'User 1', text: 'Hello!' }, { sender: 'You', text: 'Hi!' }] },
         { name: 'Nesaruddin Sikdar Nishad', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        { name: 'Rifat Hossain', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        { name: 'Jahidul Islam', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        { name: 'Rakib Hasan', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        { name: 'Hasib Ahmed', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        { name: 'Anwar Hosain', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        { name: 'Zamil Akhondo', messages: [{ sender: 'User 2', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
-        // Add more chat data as needed
+        { name: 'Rifat Hossain', messages: [{ sender: 'User 3', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }] },
+        { name: 'Jahidul Islam', messages: [{ sender: 'User 4', text: 'Are you looking for me?' }, { sender: 'You', text: 'Not at all.' }] },
+        { name: 'Rakib Hasan', messages: [{ sender: 'User 5', text: 'Where are you?' }, { sender: 'You', text: 'At home, why?' }] },
+        { name: 'Hasib Ahmed', messages: [{ sender: 'User 6', text: 'I wanted to lost in heaven.' }, { sender: 'You', text: 'You are always in heaven.' }] },
+        { name: 'Anwar Hosain', messages: [{ sender: 'User 7', text: 'I am in pain...' }, { sender: 'You', text: 'Part of life.' }] },
+        { name: 'Zamil Akhondo', messages: [{ sender: 'User 8', text: 'Text me bro!!!' }, { sender: 'You', text: 'Ok, I will...' }] },
       ],
       selectedChat: null
     };
@@ -45,5 +44,4 @@ export default {
 </script>
 
 <style scoped>
-/* Add any additional scoped styles here if necessary */
 </style>

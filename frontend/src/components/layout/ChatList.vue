@@ -3,7 +3,7 @@
         <h2 class="text-lg font-semibold mb-4">Chat List</h2>
         <ul>
             <li v-for="(chat, index) in chatList" :key="index" class="p-2 cursor-pointer hover:bg-gray-200">
-                <ChatUserCard :user="chat" @click="selectChat(chat)" />
+                <ChatUserCard :user="chat" :selectChat="selectChat" />
             </li>
         </ul>
     </div>
@@ -25,12 +25,11 @@ export default {
     },
     methods: {
         selectChat(chat) {
-            this.$emit('selectChat', chat);
+            this.$emit('selectedChat', chat);
         }
     }
 }
 </script>
 
 <style scoped>
-/* Add any additional scoped styles here if necessary */
 </style>
