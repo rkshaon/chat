@@ -1,7 +1,5 @@
 <template>
     <div class="w-1/5 bg-white p-4 border-r overflow-y-auto">
-        <!-- <h2 class="text-lg font-semibold mb-4">Chat List</h2>
-          -->
         <div class="mb-4">
             <div class="relative">
                 <input type="text" v-model="searchQuery" placeholder="Search..."
