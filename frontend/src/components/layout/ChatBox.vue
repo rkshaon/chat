@@ -1,8 +1,8 @@
 <template>
     <div class="w-4/5 flex flex-col p-4">
-        <h2 class="text-lg font-semibold mb-4">Chat History</h2>
         <div class="flex-1 overflow-y-auto">
             <div v-if="chat">
+                <h2 class="text-lg font-semibold mb-4">Chat History</h2>
                 <div v-for="(message, index) in chat.messages" :key="index" class="mb-2">
                     <div
                         :class="{ 'bg-gray-200 p-2 rounded': message.sender !== 'You', 'bg-blue-200 p-2 rounded': message.sender === 'You' }">
@@ -11,7 +11,8 @@
                 </div>
             </div>
             <div v-else>
-                <p>Select a chat to view history.</p>
+                <!-- <p>Select a chat to view history.</p> -->
+                 <NoChatBox />
             </div>
         </div>
         <div v-if="chat" class="mt-4">
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+import NoChatBox from '@/components/layout/NoChatBox.vue';
+
 export default {
     name: 'ChatBox',
     props: {
@@ -28,7 +31,10 @@ export default {
             type: Object,
             default: null,
         }
-    }
+    },
+    components: {
+        NoChatBox,
+    },
 }
 </script>
 
