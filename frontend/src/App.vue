@@ -1,5 +1,7 @@
 <template>
-  <HomeComponent />
+  <div class="h-screen flex flex-col h-full">
+    <HomeComponent />
+  </div>
 </template>
 
 <script>

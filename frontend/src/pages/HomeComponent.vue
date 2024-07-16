@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col">
     <NavBar />
-    <div class="flex h-full bg-gray-100 rounded-lg shadow-lg">
+    <div class="flex bg-gray-100 rounded-lg shadow-lg">
       <ChatList :chatList="chatList" @selectedChat="selectChat" />
       <ChatBox :chat="selectedChat" />
     </div>

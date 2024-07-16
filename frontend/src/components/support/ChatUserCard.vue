@@ -1,6 +1,6 @@
 <template>
     <div @click="selectChat(user)"
-        class="flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded-lg hover:rounded-2xl transition duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
+        class="flex items-center p-2 cursor-pointer rounded-lg hover:rounded-2xl transition duration-200 ease-in-out shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:bg-gray-200">
         <img :src="user.avatar" alt="User Avatar" class="w-12 h-12 rounded-lg mr-4" />
         <div class="flex-1">
             <div class="flex justify-between items-center">
