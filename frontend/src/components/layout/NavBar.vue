@@ -5,14 +5,21 @@
                 alt="Company Logo" class="w-10 h-10 rounded-full" />
             <span class="text-xl font-bold">Chat</span>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 relative">
             <img src="https://avatars.githubusercontent.com/u/20625263?v=4" alt="User Avatar"
                 class="w-10 h-10 rounded-full" />
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01">
-                </path>
-            </svg>
+            <div @click="toggleDropdown" class="cursor-pointer">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6h.01M12 12h.01M12 18h.01"></path>
+                </svg>
+            </div>
+            <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+            </div>
         </div>
     </nav>
 </template>
@@ -20,6 +27,27 @@
 <script>
 export default {
     name: 'NavBar',
+    data() {
+        return {
+            dropdownOpen: false
+        };
+    },
+    methods: {
+        toggleDropdown() {
+            this.dropdownOpen = !this.dropdownOpen;
+        },
+        handleClickOutside(event) {
+            if (!this.$el.contains(event.target)) {
+                this.dropdownOpen = false;
+            }
+        }
+    },
+    mounted() {
+        document.addEventListener('click', this.handleClickOutside);
+    },
+    beforeUnmount() {
+        document.removeEventListener('click', this.handleClickOutside);
+    }
 };
 </script>
 
