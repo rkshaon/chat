@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// import NavBar from '@/components/layout/NavBar.vue';
 import ChatList from '@/components/layout/ChatList.vue';
 import ChatBox from '@/components/layout/ChatBox.vue';
 
@@ -18,7 +17,6 @@ import { formatDateTime } from '@/helpers/dateTimeFormat.js';
 export default {
   name: 'HomeComponent',
   components: {
-    // NavBar,
     ChatList,
     ChatBox,
   },
