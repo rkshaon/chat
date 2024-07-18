@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <NavBar />
+    
     <div class="flex bg-gray-100 rounded-lg shadow-lg">
       <ChatList :chatList="chatList" @selectedChat="selectChat" />
       <ChatBox :chat="selectedChat" />
@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import NavBar from '@/components/layout/NavBar.vue';
 import ChatList from '@/components/layout/ChatList.vue';
 import ChatBox from '@/components/layout/ChatBox.vue';
 
@@ -18,7 +17,6 @@ import { formatDateTime } from '@/helpers/dateTimeFormat.js';
 export default {
   name: 'HomeComponent',
   components: {
-    NavBar,
     ChatList,
     ChatBox,
   },
@@ -44,7 +42,8 @@ export default {
           name: 'Rifat Hossain',
           avatar: 'https://avatars.githubusercontent.com/u/35008232?v=4',
           messages: [{ sender: 'User 3', text: 'How are you?' }, { sender: 'You', text: 'I am good, thanks!' }],
-          isOnline: true,
+          isOnline: false,
+          lastMessageTime: formatDateTime(new Date('2024-07-19T10:30:00')),
           lastMessage: 'I am leaving...',
         },
         {
@@ -80,7 +79,8 @@ export default {
           name: 'Zamil Akhondo',
           avatar: 'https://scontent.fdac45-1.fna.fbcdn.net/v/t39.30808-1/335382131_1355086355063182_838815564895351162_n.jpg?stp=dst-jpg_p200x200&_nc_cat=111&ccb=1-7&_nc_sid=50d2ac&_nc_eui2=AeH4Xf3R0ZTg8eFeQ_twOe3E-w3Xzw8mhN_7DdfPDyaE3zf6SodTPoGKDp1Pj2wmZXPiQg56vtWOrWP79KyZxCbh&_nc_ohc=w-S0Zu3S4wUQ7kNvgGgERAv&_nc_ht=scontent.fdac45-1.fna&oh=00_AYDjSdIMA8EApQGpLmOHSFX6qBB2vJ71e7xbLR8seJWL3g&oe=669A0C3C',
           messages: [{ sender: 'User 8', text: 'Text me bro!!!' }, { sender: 'You', text: 'Ok, I will...' }],
-          isOnline: true,
+          isOnline: false,
+          lastMessageTime: formatDateTime(new Date('2024-07-19T10:30:00')),
           lastMessage: 'I am leaving...',
         },
         {

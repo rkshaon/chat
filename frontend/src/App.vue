@@ -1,17 +1,14 @@
 <template>
   <div class="h-screen flex flex-col h-full">
-    <HomeComponent />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HomeComponent from '@/pages/HomeComponent.vue';
 
 export default {
   name: 'App',
-  components: {
-    HomeComponent
-  }
+  components: { },
 }
 </script>
 
