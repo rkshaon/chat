@@ -1,19 +1,20 @@
 <template>
   <div class="h-screen flex flex-col h-full">
-    <NavBar />
-    <HomeComponent />
+    <router-view></router-view>
+    <!-- <NavBar />
+    <HomeComponent /> -->
   </div>
 </template>
 
 <script>
-import HomeComponent from '@/pages/HomeComponent.vue';
-import NavBar from '@/components/layout/NavBar.vue';
+// import HomeComponent from '@/pages/HomeComponent.vue';
+// import NavBar from '@/components/layout/NavBar.vue';
 
 export default {
   name: 'App',
   components: {
-    NavBar,
-    HomeComponent
+    // NavBar,
+    // HomeComponent
   }
 }
 </script>
