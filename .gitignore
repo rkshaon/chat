@@ -1,4 +1,5 @@
 # backend
+__pycache__
 backend/channelsenv
 backend/env
 backend/chatapp/__pycache__
