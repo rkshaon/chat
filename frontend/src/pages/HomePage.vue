@@ -15,7 +15,7 @@ import ChatBox from '@/components/layout/ChatBox.vue';
 import { formatDateTime } from '@/helpers/dateTimeFormat.js';
 
 export default {
-  name: 'HomeComponent',
+  name: 'HomePage',
   components: {
     ChatList,
     ChatBox,
