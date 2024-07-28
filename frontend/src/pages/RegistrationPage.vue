@@ -4,19 +4,25 @@
             <h2 class="text-2xl font-bold mb-6 text-center">Registration</h2>
             <form @submit.prevent="login">
                 <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Full Name</label>
+                    <input type="text" id="name" v-model="name" class="mt-2 p-2 w-full border rounded" required />
+                </div>
+                <div class="mb-4">
                     <label for="email" class="block text-gray-700">Email</label>
                     <input type="email" id="email" v-model="email" class="mt-2 p-2 w-full border rounded" required />
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block text-gray-700">Username</label>
-                    <input type="email" id="email" v-model="username" class="mt-2 p-2 w-full border rounded" required />
+                    <label for="username" class="block text-gray-700">Username</label>
+                    <input type="text" id="username" v-model="username" class="mt-2 p-2 w-full border rounded"
+                        required />
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block text-gray-700">Password</label>
                     <input type="password" id="password" v-model="password" class="mt-2 p-2 w-full border rounded"
                         required />
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+                    @click="register">
                     Sign Up
                 </button>
             </form>
@@ -25,14 +31,35 @@
 </template>
 
 <script>
+import { registration } from '@/services/userAPIService';
 
 export default {
     name: 'RegistrationPage',
     data() {
         return {
+            name: '',
+            email: '',
+            username: '',
+            password: '',
         };
     },
     methods: {
+        async register() {
+            const userData = {
+                name: this.name,
+                email: this.email,
+                username: this.username,
+                password: this.password,
+            };
+            console.log('User Data:', userData);
+            const response = await registration(userData);
+            console.log(response);
+            // console.log('Registration successful:', response.data);
+            // await this.register(userData);
+            // if (!this.registrationError) {
+            //     // Handle successful registration (e.g., navigate to another page)
+            // }
+        },
     }
 }
 </script>
