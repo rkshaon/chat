@@ -4,6 +4,7 @@ backend/env
 backend/chatapp/__pycache__
 backend/chatapp/migrations
 backend/realtime_chat/__pycache__
+backend/db.sqlite3
 
 # frontend
 frontend/.DS_Store
