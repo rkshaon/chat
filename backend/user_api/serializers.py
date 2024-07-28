@@ -6,14 +6,14 @@ from user_api.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'email', 'username', 'role', 'password', 'is_private')
+        fields = ('id', 'email', 'name', 'username', 'password',)
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = User.objects.create_user(
+            name=validated_data['name'],
             email=validated_data['email'],
             username=validated_data['username'],
-            role=validated_data['role'],
             password=validated_data['password']
         )
 
