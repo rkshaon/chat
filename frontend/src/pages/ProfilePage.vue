@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: 'ProfileComponent',
+    name: 'ProfilePage',
     props: {
         user: {
             type: Object,
