@@ -1,9 +1,6 @@
 # backend
-backend/channelsenv
+__pycache__
 backend/env
-backend/chatapp/__pycache__
-backend/chatapp/migrations
-backend/realtime_chat/__pycache__
 
 # frontend
 frontend/.DS_Store
