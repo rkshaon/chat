@@ -26,6 +26,12 @@
                     Sign Up
                 </button>
             </form>
+            <div class="text-center mt-4">
+                <p class="text-gray-700">
+                    Already have account?
+                    <router-link to="/login" class="text-blue-500 hover:underline">Login here.</router-link>
+                </p>
+            </div>
         </div>
     </div>
 </template>

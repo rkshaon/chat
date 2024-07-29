@@ -16,6 +16,13 @@
                     Login
                 </button>
             </form>
+            <div class="text-center mt-4">
+                <p class="text-gray-700">
+                    Don't have an account?
+                    <router-link to="/registration" class="text-blue-500 hover:underline">Register here.</router-link>
+                </p>
+            </div>
+
         </div>
     </div>
 </template>
