@@ -11,6 +11,5 @@ const apiClient = axios.create({
 });
 
 export const registration = (data) => {
-  console.log("service", data);
   return apiClient.post(`/api/${API_VERSION}/registration`, data);
 };

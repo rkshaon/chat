@@ -32,6 +32,7 @@
 
 <script>
 import { registration } from '@/services/userAPIService';
+import { useToast } from "vue-toastification";
 
 export default {
     name: 'RegistrationPage',
@@ -51,14 +52,17 @@ export default {
                 username: this.username,
                 password: this.password,
             };
-            console.log('User Data:', userData);
-            const response = await registration(userData);
-            console.log(response);
-            // console.log('Registration successful:', response.data);
-            // await this.register(userData);
-            // if (!this.registrationError) {
-            //     // Handle successful registration (e.g., navigate to another page)
-            // }
+            const toast = useToast();
+
+            try {
+                const response = await registration(userData);
+                toast.success(response.data.message);
+                this.$router.push('/login');
+            } catch (error) {
+                for (const property in error.response.data) {
+                    toast.error(`${property}: ${error.response.data[property]}`);
+                }
+            }
         },
     }
 }
