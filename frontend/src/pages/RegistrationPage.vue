@@ -56,7 +56,8 @@ export default {
 
             try {
                 const response = await registration(userData);
-                console.log(response.data);
+                toast.success(response.data.message);
+                this.$router.push('/login');
             } catch (error) {
                 for (const property in error.response.data) {
                     toast.error(`${property}: ${error.response.data[property]}`);
