@@ -53,25 +53,15 @@ export default {
                 password: this.password,
             };
             const toast = useToast();
-            console.log('User Data:', userData);
-            console.log('Ok');
-            toast.info('Hello...');
+
             try {
                 const response = await registration(userData);
                 console.log(response.data);
             } catch (error) {
-                console.log(error.response);
-                console.log(error.response.status);
-                console.log(error.response.data);
-                toast.error('Failed.');
+                for (const property in error.response.data) {
+                    toast.error(`${property}: ${error.response.data[property]}`);
+                }
             }
-            
-            // console.log(response);
-            // console.log('Registration successful:', response.data);
-            // await this.register(userData);
-            // if (!this.registrationError) {
-            //     // Handle successful registration (e.g., navigate to another page)
-            // }
         },
     }
 }
