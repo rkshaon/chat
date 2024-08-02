@@ -9,4 +9,9 @@ urlpatterns = [
         v1_view.UserRegistrationView.as_view(),
         name='user-registration',
     ),
+    path(
+        'login',
+        v1_view.UserLoginView.as_view(),
+        name='user-login',
+    ),
 ]
