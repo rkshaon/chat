@@ -14,6 +14,7 @@ class UserRegistrationView(APIView):
 
         if serializer.is_valid():
             serializer.save()
+            print(f"Serializer Data: {serializer.data}")
 
             return Response({
                 'message': 'User registered successfully',
@@ -24,51 +25,40 @@ class UserRegistrationView(APIView):
 
 class UserLoginView(APIView):
     def post(self, request, *args, **kwargs):
-        credential = request.data.get('credential')
-        password = request.data.get('password')
+        credential = request.data.get('credential', None)
+        password = request.data.get('password', None)
 
         if not credential:
             return Response({
-                'status': False,
-                'errors': [
-                    'Please provide either email or username for login.'
-                ],
+                'errors': ['Log in credential missing.'],
             }, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            try:
-                user = User.objects.get(email=credential)
-            except Exception as e:
-                print(e)
-                user = User.objects.get(cell_no=credential)
-        except Exception as e:
-            print(e)
+            user = User.objects.get(email=credential)
+        except User.DoesNotExist:
             try:
                 user = User.objects.get(username=credential)
-            except Exception as e:
-                print(e)
+            except User.DoesNotExist:
                 user = None
 
         if user is None:
             return Response({
-                'status': False,
                 'errors': ['User not found.'],
             }, status=status.HTTP_404_NOT_FOUND)
 
         if not user.check_password(password):
             return Response({
-                'errors': ['Password is invalid'],
+                'errors': ['Invalid password'],
             }, status=status.HTTP_401_UNAUTHORIZED)
 
         if user is not None:
             refresh = RefreshToken.for_user(user)
+
             return Response({
-                'data': {
-                    'refresh': str(refresh),
-                    'access': str(refresh.access_token),
-                },
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
             })
         else:
             return Response({
                 'detail': 'Invalid credentials.'
-            }, status=status.HTTP_401_UNAUTHORIZED)
+                }, status=status.HTTP_401_UNAUTHORIZED)
