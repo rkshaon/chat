@@ -30,6 +30,7 @@
 
 <script>
 import { useToast } from "vue-toastification";
+import { mapActions } from 'vuex';
 
 export default {
     name: 'LoginPage',
@@ -40,14 +41,25 @@ export default {
         };
     },
     methods: {
+        ...mapActions('user', ['userLogin']),
+
         async login() {
             const userData = {
                 credential: this.credential,
                 password: this.password,
             };
             const toast = useToast();
-            console.log(userData);
-            toast.info("WIP");            
+            
+            try {
+                const response = await this.userLogin(userData);
+                toast.success(response.data.message);
+                this.$router.push('/');
+            } catch (error) {
+                console.error('Login error:', error);
+                for (const property in error.response.data.errors) {
+                    toast.error(`${error.response.data.errors[property]}`);
+                }
+            }
         },
     }
 }

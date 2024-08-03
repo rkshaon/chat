@@ -57,6 +57,7 @@ class UserLoginView(APIView):
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                'message': 'Successfully log in!',
             })
         else:
             return Response({
