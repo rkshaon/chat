@@ -13,3 +13,8 @@ const apiClient = axios.create({
 export const registration = (data) => {
   return apiClient.post(`/api/${API_VERSION}/registration`, data);
 };
+
+export const login = (data) => {
+  console.log(data);
+  return apiClient.post(`/api/${API_VERSION}/login`, data);
+}

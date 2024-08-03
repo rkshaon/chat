@@ -2,7 +2,7 @@
     <div class="min-h-screen flex items-center justify-center bg-gray-100">
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
             <h2 class="text-2xl font-bold mb-6 text-center">Registration</h2>
-            <form @submit.prevent="login">
+            <form @submit.prevent="register">
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700">Full Name</label>
                     <input type="text" id="name" v-model="name" class="mt-2 p-2 w-full border rounded" required />
@@ -21,8 +21,7 @@
                     <input type="password" id="password" v-model="password" class="mt-2 p-2 w-full border rounded"
                         required />
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-                    @click="register">
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
                     Sign Up
                 </button>
             </form>

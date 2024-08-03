@@ -4,8 +4,9 @@
             <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
             <form @submit.prevent="login">
                 <div class="mb-4">
-                    <label for="email" class="block text-gray-700">Email</label>
-                    <input type="email" id="email" v-model="email" class="mt-2 p-2 w-full border rounded" required />
+                    <label for="emacredentialil" class="block text-gray-700">Email or Username</label>
+                    <input type="text" id="credential" v-model="credential" class="mt-2 p-2 w-full border rounded"
+                        required />
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block text-gray-700">Password</label>
@@ -28,14 +29,38 @@
 </template>
 
 <script>
+import { useToast } from "vue-toastification";
+import { mapActions } from 'vuex';
 
 export default {
     name: 'LoginPage',
     data() {
         return {
+            credential: '',
+            password: '',
         };
     },
     methods: {
+        ...mapActions('user', ['userLogin']),
+
+        async login() {
+            const userData = {
+                credential: this.credential,
+                password: this.password,
+            };
+            const toast = useToast();
+            
+            try {
+                const response = await this.userLogin(userData);
+                toast.success(response.data.message);
+                this.$router.push('/');
+            } catch (error) {
+                console.error('Login error:', error);
+                for (const property in error.response.data.errors) {
+                    toast.error(`${error.response.data.errors[property]}`);
+                }
+            }
+        },
     }
 }
 </script>
