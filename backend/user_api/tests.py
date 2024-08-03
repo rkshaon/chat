@@ -80,7 +80,7 @@ class UserSerializerTestCase(TestCase):
 
     def test_create_user(self):
         serializer = UserSerializer(data=self.serializer_data)
-        self.assertTrue(serializer.is_valid())
+        self.assertTrue(serializer.is_valid(), serializer.errors)
         user = serializer.save()
         self.assertEqual(user.email, self.serializer_data['email'])
         self.assertEqual(user.username, self.serializer_data['username'])
