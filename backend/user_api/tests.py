@@ -1,5 +1,10 @@
+from django.urls import resolve, reverse
 from django.test import TestCase
+from django.test import SimpleTestCase
+
 from user_api.models import User
+
+from user_api.views import v1 as v1_views
 
 
 class UserModelTestCase(TestCase):
@@ -32,3 +37,14 @@ class UserModelTestCase(TestCase):
         self.assertTrue(superuser.is_active)
         self.assertTrue(superuser.is_staff)
         self.assertTrue(superuser.is_superuser)
+
+
+class UrlsTestCase(SimpleTestCase):
+    def test_user_registration_url_resolves(self):
+        url = reverse('user-registration')
+        self.assertEqual(resolve(url).func.view_class,
+                         v1_views.UserRegistrationView)
+
+    def test_user_login_url_resolves(self):
+        url = reverse('user-login')
+        self.assertEqual(resolve(url).func.view_class, v1_views.UserLoginView)
