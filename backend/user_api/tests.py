@@ -44,26 +44,31 @@ class UserModelTestCase(TestCase):
 class UrlsTestCase(SimpleTestCase):
     def test_user_registration_url_resolves(self):
         url = reverse('user-registration')
-        self.assertEqual(resolve(url).func.view_class,
-                         v1_views.UserRegistrationView)
+        self.assertEqual(
+            resolve(url).func.view_class,
+            v1_views.UserRegistrationView,
+        )
 
     def test_user_login_url_resolves(self):
         url = reverse('user-login')
-        self.assertEqual(resolve(url).func.view_class, v1_views.UserLoginView)
+        self.assertEqual(
+            resolve(url).func.view_class,
+            v1_views.UserLoginView
+        )
 
 
 class UserSerializerTestCase(TestCase):
     def setUp(self):
         self.user_attributes = {
-            'email': 'testuser@example.com',
-            'username': 'testuser',
-            'name': 'Test User',
+            'email': 'testuser1@example.com',
+            'username': 'testuser1',
+            'name': 'Test User1',
             'password': 'testpassword123'
         }
         self.serializer_data = {
-            'email': 'testuser@example.com',
-            'username': 'testuser',
-            'name': 'Test User',
+            'email': 'testuser2@example.com',
+            'username': 'testuser2',
+            'name': 'Test User2',
             'password': 'testpassword123'
         }
         self.user = User.objects.create(**self.user_attributes)
