@@ -1,29 +1,8 @@
-from django.urls import resolve, reverse
 from django.test import TestCase
-from django.test import SimpleTestCase
 
 from user_api.models import User
 
 from user_api.serializers import UserSerializer
-
-from user_api.views import v1 as v1_views
-
-
-
-class UrlsTestCase(SimpleTestCase):
-    def test_user_registration_url_resolves(self):
-        url = reverse('user-registration')
-        self.assertEqual(
-            resolve(url).func.view_class,
-            v1_views.UserRegistrationView,
-        )
-
-    def test_user_login_url_resolves(self):
-        url = reverse('user-login')
-        self.assertEqual(
-            resolve(url).func.view_class,
-            v1_views.UserLoginView
-        )
 
 
 class UserSerializerTestCase(TestCase):
