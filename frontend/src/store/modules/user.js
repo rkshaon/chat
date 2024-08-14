@@ -1,8 +1,5 @@
 // src/store/modules/auth.js
 
-// import Vue from 'vue';
-// import Vuex from 'vuex';
-
 import { login } from "@/services/userAPIService";
 
 const state = {
@@ -14,10 +11,14 @@ const mutations = {
     setTokens(state, { accessToken, refreshToken }) {
         state.accessToken = accessToken;
         state.refreshToken = refreshToken;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
     },
     clearTokens(state) {
         state.accessToken = null;
         state.refreshToken = null;
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
     },
 };
 
